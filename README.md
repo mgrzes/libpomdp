@@ -49,6 +49,20 @@ Documentation
 -------------
 On its way.
 
+Compilation
+------------
+
+1) obtain required libraries and put them in $HOME/lib, for example
+2) then link that directory to external in the libpomdp directory:
+   cd libpomdp
+   ln -s $HOME/lib external
+3) ant parser # build the parser;
+4) ant compile # compile the project using ant
+
+Compilation using InteliJ
+1) after building the parser, InteliJ should compile the whole thing but first all required jar files have
+   to be added to the project file in InteliJ
+
 Some References (growing list)
 ------------------------------
 [1] Spaan, M. T.J, and N. Vlassis. "Perseus: Randomized point-based
