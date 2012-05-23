@@ -318,12 +318,20 @@ public class PomdpStd implements Pomdp, Serializable {
         rep += "|S|: " + nrSta + ", ";
         rep += "|A|: " + nrAct + ", ";
         rep += "|O|: " + nrObs + "\n";
-        rep += "T: \n";
-        for (int a=0; a<nrAct; a++) rep += T[a].toString();
-        rep += "O: \n";
-        for (int a=0; a<nrAct; a++) rep += O[a].toString();
-        rep += "R: \n";
-        for (int a=0; a<nrAct; a++) rep += R[a].toString();
+
+        for (int a=0; a<nrAct; a++) {
+			rep += "\nT: " + getActionString(a) + "\n";
+			rep += T[a].toString();
+		}
+
+        for (int a=0; a<nrAct; a++) {
+			rep += "\nO: " + getActionString(a) + "\n";
+			rep += O[a].toString();
+		}
+        for (int a=0; a<nrAct; a++) {
+			rep += "\nR:" + getActionString(a) + "\n";
+			rep += R[a].toString();
+		}
 
         return rep;
     }
