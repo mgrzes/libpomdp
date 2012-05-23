@@ -179,7 +179,8 @@ dotPomdp
         {
             // there should be a check for the parameter distros here...
 
-            /* reward compression: is this the right approach? shouldn't we change the VI eqs instead? */
+            /* reward compression: this is the right approach because it unifies rewards to R(s,a)
+               and planners do not have to cope with different types of rewards. */
             double value;
             switch(dotPomdpSpec.rewardType) {                
                 case R_s_a_sp:
@@ -198,15 +199,19 @@ dotPomdp
                     break;
                 case R_s_a_sp_op:
                     System.out.println("PARSER: Compressing R(s,a,s',o') rewards...");
-                    //Create the R(a,s) type of reward (not very efficient, but only one time)
+                    // R(s,a) = \sum_s' [ \sum_o' R(s,a,s',o')O(a,s',o') ] T(s,a,s')
                     for (int a=0;a<dotPomdpSpec.nrAct;a++){
-                        //R[a]=new CustomVector(dotPomdpSpec.nrSta);
                         for (int s=0;s<dotPomdpSpec.nrSta;s++){
-                            CustomMatrix prod=new CustomMatrix(dotPomdpSpec.nrSta,dotPomdpSpec.nrSta);
-                            prod=dotPomdpSpec.O[a].transBmult(dotPomdpSpec.fullR[a][s]);
+                            CustomMatrix prod=dotPomdpSpec.O[a].transBmult(dotPomdpSpec.fullR[a][s]);
+
+                            System.out.println("O["+a+"]\n" + dotPomdpSpec.O[a].toString());
+                            // TODO: The parser does not get R(s,a,s',o') right at the moment ...
+                            System.out.println("R["+a+"]["+s+"]\n" + dotPomdpSpec.fullR[a][s].toString());
+                            System.out.println("Product:\n" + prod.toString());
+
                             value = 0;
                             for (int sp=0;sp<dotPomdpSpec.nrSta;sp++){
-                                value+=prod.get(sp,sp) * dotPomdpSpec.T[a].get(s, sp); // bug here?
+                                value+=prod.get(sp,sp) * dotPomdpSpec.T[a].get(s, sp); // TODO: bug here?
                             }
                             dotPomdpSpec.R[a].set(s,value);
                         }
