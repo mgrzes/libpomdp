@@ -100,9 +100,13 @@ public class CustomMatrix implements Serializable {
 		return retval;
 	}
 
+	/**
+	 * @return this*in^T
+	 */
 	public CustomMatrix transBmult(CustomMatrix in) {
 		CustomMatrix retval=new CustomMatrix(this.numRows(),in.numRows());
-		retval.m=(FlexCompColMatrix) m.transBmult(in.m, retval.m);
+		// C=A*B^T where A.transBmult(B,C)
+		m.transBmult(in.m, retval.m);
 		return retval;
 	}
 
