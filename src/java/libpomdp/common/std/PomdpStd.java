@@ -61,7 +61,7 @@ public class PomdpStd implements Pomdp, Serializable {
     // observation model: a x s' x o
     private CustomMatrix O[];
 
-    // reward model: a x s'
+    // reward model: a x s
     private CustomVector R[];
 
     // discount factor
