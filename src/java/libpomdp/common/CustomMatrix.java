@@ -39,8 +39,15 @@ public class CustomMatrix implements Serializable {
 		m.zero();
 	}
 
-	protected FlexCompColMatrix m; 
-	
+	protected FlexCompColMatrix m;
+
+	/**
+	 * @return the actual object
+	 */
+	FlexCompColMatrix getRawData() {
+		return m;
+	}
+
 	public CustomMatrix(int rows, int cols) {
 		m=new FlexCompColMatrix(rows,cols);
 	}

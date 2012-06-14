@@ -47,6 +47,13 @@ public class CustomVector implements Serializable, Comparable<CustomVector> {
 
 	protected SparseVector v;
 
+	/**
+	 * @return the actual object
+	 */
+	SparseVector getRawData() {
+		return v;
+	}
+
 	public CustomVector(double[] list) {
 		this(list.length);
 		int idx=0;
