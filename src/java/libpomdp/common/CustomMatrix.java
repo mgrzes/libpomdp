@@ -44,7 +44,7 @@ public class CustomMatrix implements Serializable {
 	/**
 	 * @return the actual object
 	 */
-	FlexCompColMatrix getRawData() {
+	public FlexCompColMatrix getRawData() {
 		return m;
 	}
 

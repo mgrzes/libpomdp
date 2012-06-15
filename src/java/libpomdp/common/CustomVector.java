@@ -50,7 +50,7 @@ public class CustomVector implements Serializable, Comparable<CustomVector> {
 	/**
 	 * @return the actual object
 	 */
-	SparseVector getRawData() {
+	public SparseVector getRawData() {
 		return v;
 	}
 

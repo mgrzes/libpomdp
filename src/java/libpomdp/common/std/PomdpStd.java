@@ -336,5 +336,41 @@ public class PomdpStd implements Pomdp, Serializable {
         return rep;
     }
 
-} // PomdpStd.java
+	/**
+	 * @return the array that stores names of all actions
+	 */
+	public String[] getNamesActions() {
+		return actStr;
+	}
 
+	/**
+	 * @return the array that stores names of all observations
+	 */
+	public String[] getNamesObs() {
+		return obsStr;
+	}
+
+	/**
+	 * @return the array that stores names of all states
+	 */
+	public String[] getNamesStates() {
+		return staStr;
+	}
+
+	// ------------------------------------------------------------------------
+	// methods that return raw data
+	// ------------------------------------------------------------------------
+
+	public CustomMatrix[] getT() {
+		return T;
+	}
+
+	public CustomVector[] getR() {
+		return R;
+	}
+
+	public CustomMatrix[] getO() {
+		return O;
+	}
+
+} // PomdpStd.java
