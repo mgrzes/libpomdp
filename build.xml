@@ -7,7 +7,7 @@
 <!--  * W3: http://www.cs.uic.edu/~dmanilof                                           -->
 <!--  ******************************************************************************* -->
 
-<project name="libpomdp" default="dist">
+<project name="mglibpomdp" default="dist">
     <description>
         build file
     </description>
@@ -16,7 +16,7 @@
   <property name="src"     location="src/java"/>
   <property name="build"   location="build"/>
   <property name="dist"    location="dist"/>
-  <property name="lib"     location="external"/>
+  <property name="lib"     location="${user.home}/lib"/>
 
 <!-- external libraries classpath
 -->
@@ -151,6 +151,11 @@
     <mkdir dir="${dist}"/>
     <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
     <jar jarfile="${dist}/${ant.project.name}.jar" basedir="${build}"/>
+      <copy todir="${lib}" flatten="true">
+          <resources>
+              <file file="${dist}/${ant.project.name}.jar"/>
+          </resources>
+      </copy>
   </target>
 
     <target name="javadoc">
