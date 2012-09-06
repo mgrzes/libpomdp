@@ -28,14 +28,35 @@ public class FileParser {
             }
 			PomdpSpecStd data=DotPomdpParserStd.getSpec();
 			String actStr[]=null;
-			if (data.actList != null)
+			if (data.actList != null) {
 				actStr= (String []) data.actList.toArray (new String [data.actList.size ()]);
+			} else {
+				// if symbolic names for actions are not provided in the file, then action ids are used
+				actStr = new String[data.nrAct];
+				for ( int a = 0; a < data.nrAct; a++ ) {
+					actStr[a] = Integer.toString(a);
+				}
+			}
 			String obsStr[]=null;
-			if (data.obsList != null)
+			if (data.obsList != null) {
 			    obsStr = (String []) data.obsList.toArray (new String [data.obsList.size ()]);
+			} else {
+				// if symbolic names for observations are not provided in the file, then observation ids are used
+				obsStr = new String[data.nrObs];
+				for ( int o = 0; o < data.nrObs; o++ ) {
+					obsStr[o] = Integer.toString(o);
+				}
+			}
 			String staStr[]=null;
-			if (data.staList != null)
-			    obsStr = (String []) data.staList.toArray (new String [data.staList.size ()]);
+			if (data.staList != null) {
+			    staStr = (String []) data.staList.toArray (new String [data.staList.size ()]);
+			} else {
+				// if symbolic names for states are not provided in the file, then state ids are used
+				staStr = new String[data.nrSta];
+				for ( int s = 0; s < data.nrSta; s++ ) {
+					staStr[s] = Integer.toString(s);
+				}
+			}
 			newPomdp=new PomdpStd(data.T,
                                   data.O,
                                   data.R,
