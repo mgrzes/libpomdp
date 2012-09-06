@@ -26,7 +26,8 @@ tokens {
     RTOK            = 'R' ;
     UNIFORMTOK      = 'uniform' ;
     IDENTITYTOK     = 'identity' ;
-    REWARDTOK       = 'reward' ; 
+    REWARDTOK       = 'reward' ;
+    REWARDSTOK      = 'rewards' ;
     COSTTOK         = 'cost' ;
     STARTTOK        = 'start' ;
     INCLUDETOK      = 'include' ; 
@@ -249,6 +250,7 @@ value_param
 
 value_tail      
     : REWARDTOK
+    | REWARDSTOK
     | COSTTOK
          {err("PARSER: Costs are not supported... sure that you want to use costs?");}
     ;
