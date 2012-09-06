@@ -28,7 +28,13 @@ public class PomdpSpecStd implements Serializable{
     	private RewardType(int p) { _p = p; }
     	public int getP() { return _p; }
     }
-    
+
+	public PomdpSpecStd() {
+		// the discount factor is not specified in all benchmarks in Cassandra's format; -1 will mean that it was
+		// not specified
+		discount = -1;
+	}
+
     // the reward representation used
     public RewardType rewardType;
     

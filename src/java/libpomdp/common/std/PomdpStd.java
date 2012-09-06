@@ -333,6 +333,8 @@ public class PomdpStd implements Pomdp, Serializable {
 			rep += R[a].toString();
 		}
 
+		rep += "\ngamma=" + gamma + "\n";
+
         return rep;
     }
 
