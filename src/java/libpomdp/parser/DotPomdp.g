@@ -370,7 +370,7 @@ trans_spec_tail
     | paction {matrixContext=MC_TRANSITION;} ui_matrix
         // full matrix specification, set if for each action 
         {
-            for(int a : $paction.l) dotPomdpSpec.T[a] = $ui_matrix.m;
+            for(int a : $paction.l) dotPomdpSpec.T[a] = $ui_matrix.m.copy();
         }
     ;
 
@@ -398,7 +398,10 @@ obs_spec_tail
     | paction {matrixContext=MC_OBSERVATION;} u_matrix
         // full matrix specification, set if for each action 
         {
-        	for(int a : $paction.l) dotPomdpSpec.O[a] = $u_matrix.m;
+        	for(int a : $paction.l) {
+        	    // create a copy of a matrix in case one action will have different values defined below in the file
+        	    dotPomdpSpec.O[a] = $u_matrix.m.copy();
+        	}
         }
     ;
 
