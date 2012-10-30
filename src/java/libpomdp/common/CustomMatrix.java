@@ -56,6 +56,10 @@ public class CustomMatrix implements Serializable {
 		m=new FlexCompColMatrix(cm.m);
 	}
 
+	public CustomMatrix(FlexCompColMatrix fcm) {
+		m=new FlexCompColMatrix(fcm);
+	}
+
 	public CustomMatrix(double[][] list) {
 		int cols=list.length;
 		int rows=list[0].length;
@@ -96,7 +100,13 @@ public class CustomMatrix implements Serializable {
 
 	public CustomVector transMult(CustomVector in) {
 		CustomVector retval=new CustomVector(this.numRows());
-		retval.v=(SparseVector) m.transMult(in.v, retval.v);
+		try {
+			retval.v=(SparseVector) m.transMult(in.v, retval.v);
+		} catch (Exception e) {
+			System.err.println("Exception: " + e.getMessage());
+			e.printStackTrace();
+			System.exit(1);
+		}
 		return retval;
 	}
 

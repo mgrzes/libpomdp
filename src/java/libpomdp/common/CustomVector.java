@@ -73,6 +73,11 @@ public class CustomVector implements Serializable, Comparable<CustomVector> {
 		v=cv.v.copy();
 	}
 
+	public CustomVector(SparseVector sv) {
+		this(sv.size());
+		v=sv.copy();
+	}
+
 	public double dot(CustomVector cv) {
 		return(v.dot(cv.v));
 	}
