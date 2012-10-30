@@ -110,13 +110,13 @@ public class PomdpStd implements Pomdp, Serializable {
         // set initial belief state
         this.initBelief = new BeliefStateStd(init, 0.0);
 
-        // copy the model matrices - transform from dense to comprow
-        // do we really need this? dense is in sparse form already...
         for (int a = 0; a < nrAct; a++) {
-            this.T[a] = new CustomMatrix(T[a]);
-            this.O[a] = new CustomMatrix(O[a]);
-            this.R[a] = new CustomVector(R[a]);
+			// CustomMatrix(FlexCompColMatrix fcm) constructor should be used here
+            this.T[a] = new CustomMatrix(T[a].getRawData());
+            this.O[a] = new CustomMatrix(O[a].getRawData());
+            this.R[a] = new CustomVector(R[a].getRawData());
         }
+		System.out.println("PARSER: PomdpStd::PomdpStd() object created");
     } // constructor
 
     public PomdpStd(PomdpStd pomdp) {
