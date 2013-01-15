@@ -1,5 +1,12 @@
-libpomdp
+TODO: rewards are fine overall in the current version of the flat (Cassandra's format) parser, but currently only one
+type of the reward is allowed per one pomdp file. I need to changed this so that at least every action in one file could
+have a different reward specification.
+
+mglibpomdp
 --------
+
+mglibpomdp is a fork of the libpomdp library modified and extended by
+Marek Grzes.
 
 libpomdp (or libPOMDP) is an implementation of different offline and
 online Partially Observable Markov Decision Process (POMDP)
