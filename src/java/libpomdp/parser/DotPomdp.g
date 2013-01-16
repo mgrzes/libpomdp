@@ -253,10 +253,13 @@ param_type
     ;
 
 
-discount_param  
-    : DISCOUNTTOK COLONTOK FLOAT
-      {// set discount factor in global problem struct
-       dotPomdpSpec.discount = Double.parseDouble($FLOAT.text);}
+discount_param  // set discount factor in global problem struct
+    : DISCOUNTTOK COLONTOK FLOAT {
+        dotPomdpSpec.discount = Double.parseDouble($FLOAT.text);
+    }
+    | DISCOUNTTOK COLONTOK INT {
+        dotPomdpSpec.discount = Double.parseDouble($INT.text);
+    }
     ;
 
 value_param     
