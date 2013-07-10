@@ -83,6 +83,9 @@ public class PomdpStd implements Pomdp, Serializable {
     // methods
     // ------------------------------------------------------------------------
 
+	/** don't use it */
+	public PomdpStd() { }
+
     /// constructor
     public PomdpStd(CustomMatrix[] T,
                     CustomMatrix[] O,

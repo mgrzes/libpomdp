@@ -28,6 +28,9 @@ public class BeliefStateStd implements BeliefState, Serializable {
     // associated alpha vector id
     private int planid = -1;
 
+	/** don't use it */
+	public BeliefStateStd() {}
+
     // constructor
     // in case this is the initial belief, poba = 0.0
     public BeliefStateStd(CustomVector bSparse, double poba) {

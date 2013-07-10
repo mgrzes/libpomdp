@@ -48,6 +48,9 @@ public class CustomMatrix implements Serializable {
 		return m;
 	}
 
+	/** don't use it */
+	public CustomMatrix() { }
+
 	public CustomMatrix(int rows, int cols) {
 		m=new FlexCompColMatrix(rows,cols);
 	}

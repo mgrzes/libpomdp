@@ -54,6 +54,9 @@ public class CustomVector implements Serializable, Comparable<CustomVector> {
 		return v;
 	}
 
+	/** don't use it */
+	public CustomVector() { }
+
 	public CustomVector(double[] list) {
 		this(list.length);
 		int idx=0;
