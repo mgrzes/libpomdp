@@ -145,6 +145,12 @@
     <javac taskname="javac" target="1.6" source="1.6" srcdir="${src}" destdir="${build}" classpathref="classpath" includeantruntime="false" debug="on" debuglevel="lines,vars,source"/>
   </target>
 
+  <target name="compile-no-parser"
+            description="compile the source " >
+        <!-- Compile the java code from ${src} into ${build} -->
+        <javac taskname="javac" target="1.6" source="1.6" srcdir="${src}" destdir="${build}" classpathref="classpath" includeantruntime="false" debug="on" debuglevel="lines,vars,source"/>
+  </target>
+
   <target name="dist" depends="compile" description="generate the distribution" >
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}"/>
@@ -160,6 +166,22 @@
           </resources>
       </copy>
   </target>
+
+    <target name="dist-no-parser" depends="compile-no-parser" description="generate the distribution" >
+        <!-- Create the distribution directory -->
+        <mkdir dir="${dist}"/>
+        <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+        <jar jarfile="${dist}/${ant.project.name}.jar" basedir="${build}">
+            <!-- add sources as well -->
+            <fileset dir="${src}" includes="**/*.java"/>
+            <fileset dir="${src}" includes="**/*.g"/>
+        </jar>
+        <copy todir="${lib}" flatten="true">
+            <resources>
+                <file file="${dist}/${ant.project.name}.jar"/>
+            </resources>
+        </copy>
+    </target>
 
     <target name="javadoc">
       <javadoc
