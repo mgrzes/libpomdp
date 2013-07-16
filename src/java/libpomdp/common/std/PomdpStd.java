@@ -143,8 +143,7 @@ public class PomdpStd implements Pomdp, Serializable {
         BeliefState bPrime;
         // compute T[a]' * b1
         CustomVector b1 = b.getPoint();
-        CustomVector b2 = new CustomVector(nrSta);
-        b2 = T[a].transMult(b1);
+        CustomVector b2 = T[a].transMult(b1);
         // System.out.println("Elapsed in tao - T[a] * b1" +
         // (System.currentTimeMillis() - start));
 
