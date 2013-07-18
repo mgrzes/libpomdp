@@ -158,7 +158,8 @@ public class PomdpStd implements Pomdp, Serializable {
         if (poba < 0.00001) {
             // System.err.println("Zero prob observation - resetting to init");
             // this branch will have poba = 0.0
-            bPrime = initBelief;
+            // bPrime = initBelief;
+			bPrime = b; // keep current belief
         } else {
             // safe to normalize now
             b2 = b2.scale(1.0 / poba);
