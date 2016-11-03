@@ -166,7 +166,13 @@ public class CustomVector implements Serializable, Comparable<CustomVector> {
 	}
 
 	public void add(double d, CustomVector cv) {
-		v.add(d,cv.v);	
+		try {
+			v.add(d, cv.v);
+		} catch (Exception e ) {
+			System.err.println(e.toString());
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 	public void set(CustomVector res) {
